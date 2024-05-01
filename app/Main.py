@@ -15,7 +15,7 @@ class Libro(BaseModel):
     categoria: str
     resumen: str
 
-with open('libros.json','r') as f:
+with open('/code/app/libros.json','r') as f:
     libros= json.load(f)
 
 
@@ -50,7 +50,7 @@ def añadir_libro(libro: Libro):
     }
     libros.append(new_libro)
 
-    with open('libros.json','w') as f:
+    with open('/code/app/libros.json','w') as f:
         json.dump(libros,f)
     return new_libro
 
@@ -68,7 +68,7 @@ def cambiar_libro(libro:Libro):
     if len(libro_lista) > 0:
         libros.remove(libro_lista[0])
         libros.append(new_libro)
-        with open('libros.json','w') as f:
+        with open('/code/app/libros.json','w') as f:
             json.dump(libros,f)
         return new_libro
     else:
@@ -81,7 +81,7 @@ def eliminar_libro(l_id:int):
     delete_libro = [l for l in libros if l['id'] ==l_id]
     if (len(delete_libro) >0):
         libros.remove(delete_libro[0])
-        with open('libros.json','w') as f:
+        with open('/code/app/libros.json','w') as f:
             json.dump(libros,f)
         raise HTTPException(status_code=204, detail="Libro eliminado")
     else:
