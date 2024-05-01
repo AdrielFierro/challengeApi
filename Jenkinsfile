@@ -7,7 +7,7 @@ pipeline{
         stage("build docker image"){
             steps{
                 script{
-                    powershell 'docker build -t challengeapi .'
+                    powershell 'docker build -t challengeapi .' 
                     
                 }
             }
